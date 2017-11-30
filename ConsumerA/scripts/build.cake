@@ -9,6 +9,9 @@ var packageName = "CA.PA.IntegrationTests";
 
 var solution = File("../ConsumerA.sln");
 
+Task("CI-Build")
+	.IsDependentOn("Push-CosumerTests");
+
 Task("NuGet-Restore")
     .Description("Restoring NuGet packages")
     .Does(() =>
@@ -20,19 +23,19 @@ Task("build")
 	.IsDependentOn("NuGet-Restore")
 	.Does(() => DotNetBuild(solution));
 
-Task("pack")
+Task("Pack-CosumerTests")
   .IsDependentOn("build")
   .Does(() => 
   {
-    NuGetPack("./" + packageName + ".nuspec", new NuGetPackSettings
+    NuGetPack("../Tests/CA.PA.IntegrationTests/" + packageName + ".nuspec", new NuGetPackSettings
 	{
 		OutputDirectory = "./out",
 		Version = packageVersion
 	});
 });
 
-Task("push")
-  .IsDependentOn("pack")
+Task("Push-CosumerTests")
+  .IsDependentOn("Pack-CosumerTests")
   .Does(() =>
   {
 	NuGetPush(
