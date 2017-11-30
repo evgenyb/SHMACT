@@ -1,9 +1,11 @@
 ﻿var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
-var nugetFeed = Argument("nugetFeed", "c:/nuget");
+var nugetRestoreFeed = Argument("nugetRestoreFeed", "c:/nuget");
+var nugetPushFeed = Argument("nugetPushFeed", "c:/nuget");
 var packageVersion = Argument("packageVersion", "1.2.0");
 
-var solution = File("./ProviderA.Contracts.csproj");
+var packageName = "ProviderA.Contracts";
+var solution = File("./ProviderA.Contracts.sln");
 
 Task("build").Does(() => DotNetBuild(solution));
 
@@ -11,12 +13,23 @@ Task("pack")
   .IsDependentOn("build")
   .Does(() => 
   {
-    NuGetPack("./ProviderA.Contracts.nuspec", new NuGetPackSettings
+    NuGetPack("./" + packageName + ".nuspec", new NuGetPackSettings
 	{
 		OutputDirectory = "./out",
 		Version = packageVersion
 	});
 });
+
+Task("NuGet-Restore")
+    .Description("Restoring NuGet packages")
+    .Does(() =>
+	{
+		NuGetRestore(solution, 
+			new NuGetRestoreSettings
+			{
+				Source = nugetRestoreFeed
+			});
+	});
 
 Task("default")
   .IsDependentOn("pack");
@@ -26,10 +39,10 @@ Task("push")
   .Does(() =>
   {
 	NuGetPush(
-        "./out/ProviderA.Contracts." + packageVersion + ".nupkg",
+        "./out/" + packageName + "." + packageVersion + ".nupkg",
         new NuGetPushSettings
         {
-            Source = nugetFeed
+            Source = nugetPushFeed
         });
   });
 RunTarget(target);
