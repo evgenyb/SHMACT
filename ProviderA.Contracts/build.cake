@@ -7,7 +7,9 @@ var packageVersion = Argument("packageVersion", "1.2.0");
 var packageName = "ProviderA.Contracts";
 var solution = File("./ProviderA.Contracts.sln");
 
-Task("build").Does(() => DotNetBuild(solution));
+Task("build")
+	.IsDependentOn("NuGet-Restore")
+	.Does(() => DotNetBuild(solution));
 
 Task("pack")
   .IsDependentOn("build")
@@ -24,11 +26,7 @@ Task("NuGet-Restore")
     .Description("Restoring NuGet packages")
     .Does(() =>
 	{
-		NuGetRestore(solution, 
-			new NuGetRestoreSettings
-			{
-				Source = nugetRestoreFeed
-			});
+		NuGetRestore(solution);
 	});
 
 Task("default")
