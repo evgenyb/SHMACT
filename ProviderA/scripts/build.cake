@@ -1,4 +1,5 @@
 ﻿#tool nuget:?package=NUnit.ConsoleRunner&version=3.4.0
+#tool "NUnit.Extension.TeamCityEventListener"
 
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
@@ -54,7 +55,13 @@ Task("Run-ConsumerA-IntegrationTests")
 	.IsDependentOn("Restore-ConsumerA-IntegrationTests")
 	.Does(() =>
 	{
-		var unitTestAssemblies = GetFiles("./**/tests/*.IntegrationTests.dll");
+		var testsPackageName = "ca.pa.integrationtests";
+		var unitTestAssemblies = GetFiles("./" + testsPackageName + "*/tests/*.IntegrationTests.dll");
+
+		NuGetInstall(testsPackageName, new NuGetInstallSettings
+		{
+			Source = new[] { nugetRestoreFeed }
+		});
 
 		NUnit3(
 			unitTestAssemblies,
@@ -66,13 +73,5 @@ Task("Run-ConsumerA-IntegrationTests")
 			});		
 	});
 
-Task("Restore-ConsumerA-IntegrationTests")
-	.Does(() =>
-	{
-		NuGetInstall("ca.pa.integrationtests", new NuGetInstallSettings
-		{
-			Source = new[] { nugetRestoreFeed }
-		});
-	});
 
 RunTarget(target);
