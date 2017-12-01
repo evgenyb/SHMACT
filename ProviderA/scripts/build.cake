@@ -48,4 +48,18 @@ Task("push")
 Task("default")
   .IsDependentOn("pack");
 
+
+Task("Run-ConsumerA-IntegrationTests")
+	.IsDependentOn("Restore-ConsumerA-IntegrationTests")
+	.Does(() =>
+	{
+		
+	});
+
+Task("Restore-ConsumerA-IntegrationTests")
+	.Does(() =>
+	{
+		NuGetInstall("ca.pa.integrationtests");
+	});
+
 RunTarget(target);
