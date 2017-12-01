@@ -1,5 +1,4 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 using System.ServiceModel;
 using Castle.Facilities.WcfIntegration;
 using Castle.MicroKernel.Registration;
@@ -8,7 +7,7 @@ using NUnit.Framework;
 using ProviderA.Contracts;
 using ProviderA.Contracts.ServiceDependencies.CB;
 
-namespace CA.PA.IntegrationTests
+namespace CB.PA.IntegrationTests
 {
     [TestFixture]
     public class ProviderAIntegrationTests
