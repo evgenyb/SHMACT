@@ -55,12 +55,15 @@ Task("Run-ConsumerA-IntegrationTests")
 	.Does(() =>
 	{
 		var testsPackageName = "ca.pa.integrationtests";
-		var unitTestAssemblies = GetFiles("./" + testsPackageName + ".*/tests/*.IntegrationTests.dll");
-
+		var packageFolder = Directory("../packages/") + Directory(testsPackageName);
+		var testFiles = $"{packageFolder}/**/tests/*.IntegrationTests.dll";
 		NuGetInstall(testsPackageName, new NuGetInstallSettings
 		{
-			Source = new[] { nugetRestoreFeed }
+			Source = new[] { nugetRestoreFeed },
+			OutputDirectory = packageFolder
 		});
+
+		var unitTestAssemblies = GetFiles(testFiles);
 
 		NUnit3(
 			unitTestAssemblies,
