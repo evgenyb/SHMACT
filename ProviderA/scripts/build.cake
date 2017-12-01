@@ -54,26 +54,35 @@ Task("default")
 Task("Run-ConsumerA-IntegrationTests")
 	.Does(() =>
 	{
-		var testsPackageName = "ca.pa.integrationtests";
-		var packageFolder = Directory("../packages/") + Directory(testsPackageName);
-		var testFiles = $"{packageFolder}/**/tests/*.IntegrationTests.dll";
-		NuGetInstall(testsPackageName, new NuGetInstallSettings
-		{
-			Source = new[] { nugetRestoreFeed },
-			OutputDirectory = packageFolder
-		});
-
-		var unitTestAssemblies = GetFiles(testFiles);
-
-		NUnit3(
-			unitTestAssemblies,
-			new NUnit3Settings()
-			{
-				NoHeader = true,
-				NoResults = true,
-				TeamCity = BuildSystem.IsRunningOnTeamCity
-			});		
+		RunConsumerIntegrationTests("ca.pa.integrationtests");
 	});
 
+Task("Run-ConsumerB-IntegrationTests")
+	.Does(() =>
+	{
+		RunConsumerIntegrationTests("cb.pa.integrationtests");
+	});
+
+public void RunConsumerIntegrationTests(string testsPackageName)
+{
+	var packageFolder = Directory("../packages/") + Directory(testsPackageName);
+	var testFiles = $"{packageFolder}/**/tests/*.IntegrationTests.dll";
+	NuGetInstall(testsPackageName, new NuGetInstallSettings
+	{
+		Source = new[] { nugetRestoreFeed },
+		OutputDirectory = packageFolder
+	});
+
+	var unitTestAssemblies = GetFiles(testFiles);
+
+	NUnit3(
+		unitTestAssemblies,
+		new NUnit3Settings()
+		{
+			NoHeader = true,
+			NoResults = true,
+			TeamCity = BuildSystem.IsRunningOnTeamCity
+		});
+}
 
 RunTarget(target);

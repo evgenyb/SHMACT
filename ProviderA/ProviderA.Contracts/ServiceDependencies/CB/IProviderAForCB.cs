@@ -2,6 +2,7 @@
 
 namespace ProviderA.Contracts.ServiceDependencies.CB
 {
+    [ServiceContract(Name = "IProviderA", Namespace = Constants.OperationsNamespace)]
     public interface IProviderAForCB
     {
         [OperationContract]
