@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.ServiceModel;
 using Castle.Facilities.WcfIntegration;
 using Castle.MicroKernel.Registration;
@@ -10,7 +11,7 @@ using ProviderA.Contracts.ServiceDependencies.CA;
 namespace CA.PA.IntegrationTests
 {
     [TestFixture]
-    public class ProviderATests
+    public class ProviderAIntegrationTests
     {
         IWindsorContainer _container;
         private IProviderAForCA _providera;
@@ -19,10 +20,11 @@ namespace CA.PA.IntegrationTests
         {
             _container = new WindsorContainer();
             _container.AddFacility<WcfFacility>();
+            var httpBaseUrl = ConfigurationManager.AppSettings["Global.WcfServices.HttpBaseUrl"];
             _container.Register(Component.For<IProviderAForCA>()
                 .AsWcfClient(WcfEndpoint
                     .BoundTo(new BasicHttpBinding())
-                    .At("http://localhost/ProviderA/ProviderA.svc")));
+                    .At(httpBaseUrl + "/ProviderA/ProviderA.svc")));
 
             _providera = _container.Resolve<IProviderAForCA>();
         }
@@ -34,7 +36,7 @@ namespace CA.PA.IntegrationTests
         }
 
         [Test]
-        public void Test1()
+        public void IProviderAForCA_M1()
         {
             var response = _providera.M1();
             Assert.That(response, Is.Not.Null);
