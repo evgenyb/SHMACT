@@ -55,7 +55,7 @@ Task("Run-ConsumerA-IntegrationTests")
 	.Does(() =>
 	{
 		var testsPackageName = "ca.pa.integrationtests";
-		var unitTestAssemblies = GetFiles("./" + testsPackageName + "*/tests/*.IntegrationTests.dll");
+		var unitTestAssemblies = GetFiles("./" + testsPackageName + ".*/tests/*.IntegrationTests.dll");
 
 		NuGetInstall(testsPackageName, new NuGetInstallSettings
 		{
