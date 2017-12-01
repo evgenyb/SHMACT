@@ -44,7 +44,7 @@
       <HintPath>..\..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="ProviderA.Contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ProviderA.Contracts.1.5.0\lib\net462\ProviderA.Contracts.dll</HintPath>
+      <HintPath>packages\ProviderA.Contracts.1.5.17\lib\net462\ProviderA.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
