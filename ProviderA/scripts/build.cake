@@ -54,7 +54,16 @@ Task("Run-ConsumerA-IntegrationTests")
 	.IsDependentOn("Restore-ConsumerA-IntegrationTests")
 	.Does(() =>
 	{
-		
+		var unitTestAssemblies = GetFiles("./**/tests/*.IntegrationTests.dll");
+
+		NUnit3(
+			unitTestAssemblies,
+			new NUnit3Settings()
+			{
+				NoHeader = true,
+				NoResults = true,
+				TeamCity = BuildSystem.IsRunningOnTeamCity
+			});		
 	});
 
 Task("Restore-ConsumerA-IntegrationTests")
