@@ -73,6 +73,7 @@ Task("Run-Consumer-IntegrationTests")
 	{
 		RunConsumerIntegrationTests("ca.pa.integrationtests");
 		RunConsumerIntegrationTests("cb.pa.integrationtests");
+		RunConsumerIntegrationTests("cc.pa.integrationtests");
 	});
 
 public void RunConsumerIntegrationTests(string testsPackageName)
