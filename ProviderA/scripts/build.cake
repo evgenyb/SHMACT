@@ -4,6 +4,7 @@ var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 var apiKey = Argument("apiKey", "API-4UYDPMET0PF6EDSFSLN9NUJWH9I");
 var nugetPushFeed = Argument("nugetPushFeed", "http://localhost:8085/nuget/packages");
+var nugetRestoreFeed = Argument("nugetRestoreFeed", "c:\\nuget");
 var packageVersion = Argument("packageVersion", "6.1.0");
 
 var packageName = "ProviderA";
@@ -59,7 +60,10 @@ Task("Run-ConsumerA-IntegrationTests")
 Task("Restore-ConsumerA-IntegrationTests")
 	.Does(() =>
 	{
-		NuGetInstall("ca.pa.integrationtests");
+		NuGetInstall("ca.pa.integrationtests", new NuGetInstallSettings
+		{
+			Source = new[] { nugetRestoreFeed }
+		});
 	});
 
 RunTarget(target);
