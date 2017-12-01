@@ -10,6 +10,6 @@
     <copyright>Copyright 2017</copyright>
   </metadata>
   <files>
-    <file src="out\**\*.*" target="lib\net462" />
+    <file src="out\**\*.*" target="tests" />
   </files>
 </package>
