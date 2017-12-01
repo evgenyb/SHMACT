@@ -51,15 +51,10 @@ Task("default")
   .IsDependentOn("pack");
 
 
-Task("Run-ConsumerA-IntegrationTests")
+Task("Run-Consumer-IntegrationTests")
 	.Does(() =>
 	{
 		RunConsumerIntegrationTests("ca.pa.integrationtests");
-	});
-
-Task("Run-ConsumerB-IntegrationTests")
-	.Does(() =>
-	{
 		RunConsumerIntegrationTests("cb.pa.integrationtests");
 	});
 
