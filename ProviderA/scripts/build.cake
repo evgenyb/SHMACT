@@ -52,7 +52,6 @@ Task("default")
 
 
 Task("Run-ConsumerA-IntegrationTests")
-	.IsDependentOn("Restore-ConsumerA-IntegrationTests")
 	.Does(() =>
 	{
 		var testsPackageName = "ca.pa.integrationtests";
