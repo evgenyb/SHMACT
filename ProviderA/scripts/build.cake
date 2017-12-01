@@ -7,7 +7,7 @@ var nugetPushFeed = Argument("nugetPushFeed", "http://localhost:8085/nuget/packa
 var packageVersion = Argument("packageVersion", "6.1.0");
 
 var packageName = "ProviderA";
-var solution = File("./ProviderA.sln");
+var solution = File("../ProviderA.sln");
 
 Task("NuGet-Restore")
     .Description("Restoring NuGet packages")
@@ -25,7 +25,7 @@ Task("pack")
   .IsDependentOn("build")
   .Does(() => 
   {
-    NuGetPack("./" + packageName +".nuspec", new NuGetPackSettings
+    NuGetPack("../ProviderA/" + packageName +".nuspec", new NuGetPackSettings
 	{
 		OutputDirectory = "./out",
 		Version = packageVersion
