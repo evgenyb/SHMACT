@@ -36,7 +36,7 @@ namespace CA.PA.IntegrationTests
         }
 
         [Test]
-        public void IProviderAForCA_M1()
+        public void IProviderAForCB_M1()
         {
             var response = _providerb.M2();
             Assert.That(response, Is.Not.Null);
