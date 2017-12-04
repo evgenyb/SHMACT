@@ -4,8 +4,8 @@ using Castle.Facilities.WcfIntegration;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using NUnit.Framework;
-using ProviderA.Contracts;
-using ProviderA.Contracts.ServiceDependencies.CA;
+using ServiceD.Contracts;
+using ServiceD.Contracts.ServiceDependencies.ServiceA;
 
 namespace ServiceAToServiceD.IntegrationTests
 {
@@ -13,19 +13,19 @@ namespace ServiceAToServiceD.IntegrationTests
     public class ServiceAToServiceDIntegrationTests
     {
         IWindsorContainer _container;
-        private IProviderAForCA _serviceD;
+        private IServiceDForServiceA _serviceD;
         [OneTimeSetUp]
         public void Init()
         {
             _container = new WindsorContainer();
             _container.AddFacility<WcfFacility>();
             var httpBaseUrl = ConfigurationManager.AppSettings["Global.WcfServices.HttpBaseUrl"];
-            _container.Register(Component.For<IProviderAForCA>()
+            _container.Register(Component.For<IServiceDForServiceA>()
                 .AsWcfClient(WcfEndpoint
                     .BoundTo(new BasicHttpBinding())
                     .At(httpBaseUrl + "/ServiceD.SF/ServiceD.svc")));
 
-            _serviceD = _container.Resolve<IProviderAForCA>();
+            _serviceD = _container.Resolve<IServiceDForServiceA>();
         }
 
         [OneTimeTearDown]
