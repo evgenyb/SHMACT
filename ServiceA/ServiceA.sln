@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.26606.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D3A22F3A-1DA3-4309-8EFD-D0D5DABDD683}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumerA", "ConsumerA\ConsumerA.csproj", "{33338281-7B1D-4EC3-A61B-242FE1C0C412}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceA.SF", "ServiceA.SF\ServiceA.SF.csproj", "{33338281-7B1D-4EC3-A61B-242FE1C0C412}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA.PA.IntegrationTests", "Tests\CA.PA.IntegrationTests\CA.PA.IntegrationTests.csproj", "{D327A451-85C9-4377-A4E3-E7C85A25925A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceAToServiceD.IntegrationTests", "Tests\ServiceAToServiceD.IntegrationTests\ServiceAToServiceD.IntegrationTests.csproj", "{D327A451-85C9-4377-A4E3-E7C85A25925A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A94B8F27-A139-4B8A-99AD-A7FFD0C294EC}"
 EndProject

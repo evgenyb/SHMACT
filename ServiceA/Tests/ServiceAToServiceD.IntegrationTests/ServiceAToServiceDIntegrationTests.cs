@@ -1,5 +1,4 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 using System.ServiceModel;
 using Castle.Facilities.WcfIntegration;
 using Castle.MicroKernel.Registration;
@@ -8,13 +7,13 @@ using NUnit.Framework;
 using ProviderA.Contracts;
 using ProviderA.Contracts.ServiceDependencies.CA;
 
-namespace CA.PA.IntegrationTests
+namespace ServiceAToServiceD.IntegrationTests
 {
     [TestFixture]
-    public class ProviderAIntegrationTests
+    public class ServiceAToServiceDIntegrationTests
     {
         IWindsorContainer _container;
-        private IProviderAForCA _providera;
+        private IProviderAForCA _serviceD;
         [OneTimeSetUp]
         public void Init()
         {
@@ -24,9 +23,9 @@ namespace CA.PA.IntegrationTests
             _container.Register(Component.For<IProviderAForCA>()
                 .AsWcfClient(WcfEndpoint
                     .BoundTo(new BasicHttpBinding())
-                    .At(httpBaseUrl + "/ProviderA/ProviderA.svc")));
+                    .At(httpBaseUrl + "/ServiceD.SF/ServiceD.svc")));
 
-            _providera = _container.Resolve<IProviderAForCA>();
+            _serviceD = _container.Resolve<IProviderAForCA>();
         }
 
         [OneTimeTearDown]
@@ -36,9 +35,9 @@ namespace CA.PA.IntegrationTests
         }
 
         [Test]
-        public void IProviderAForCA_M1()
+        public void IServiceDForServiceA_M1()
         {
-            var response = _providera.M1();
+            var response = _serviceD.M1();
             Assert.That(response, Is.Not.Null);
             Assert.That(response, Is.TypeOf<D1>());
         }

@@ -6,9 +6,9 @@ var configuration = Argument("configuration", "Release");
 var apiKey = Argument("apiKey", "API-4UYDPMET0PF6EDSFSLN9NUJWH9I");
 var nugetPushFeed = Argument("nugetPushFeed", "http://localhost:8085/nuget/packages");
 var packageVersion = Argument("packageVersion", "1.3.0");
-var packageName = "CA.PA.IntegrationTests";
+var packageName = "ServiceAToServiceD.IntegrationTests";
 
-var solution = File("../ConsumerA.sln");
+var solution = File("../ServiceA.sln");
 
 Task("CI-Build")
 	.IsDependentOn("Push-CosumerTests");
@@ -28,14 +28,14 @@ Task("Run-IntegrationTests")
 	.IsDependentOn("build")
 	.Does(() =>
 	{
-		RunIntegrationTests("ca.pa.integrationtests");
+		RunIntegrationTests("ServiceAToServiceD.IntegrationTests");
 	});
 
 Task("Pack-CosumerTests")
   .IsDependentOn("Run-IntegrationTests")
   .Does(() => 
   {
-    NuGetPack("../Tests/CA.PA.IntegrationTests/" + packageName + ".nuspec", new NuGetPackSettings
+    NuGetPack("../Tests/ServiceAToServiceD.IntegrationTests/" + packageName + ".nuspec", new NuGetPackSettings
 	{
 		OutputDirectory = "./out",
 		Version = packageVersion
