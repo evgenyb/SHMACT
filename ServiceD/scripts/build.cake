@@ -56,24 +56,10 @@ Task("Run-ServiceA-IntegrationTests")
 		RunConsumerIntegrationTests("serviceatoserviced.integrationtests");
 	});
 
-Task("Run-ConsumerB-IntegrationTests")
+Task("Run-ServiceB-IntegrationTests")
 	.Does(() =>
 	{
-		RunConsumerIntegrationTests("cb.pa.integrationtests");
-	});
-
-Task("Run-ConsumerC-IntegrationTests")
-	.Does(() =>
-	{
-		RunConsumerIntegrationTests("cc.pa.integrationtests");
-	});
-
-Task("Run-Consumer-IntegrationTests")
-	.Does(() =>
-	{
-		RunConsumerIntegrationTests("ca.pa.integrationtests");
-		RunConsumerIntegrationTests("cb.pa.integrationtests");
-		RunConsumerIntegrationTests("cc.pa.integrationtests");
+		RunConsumerIntegrationTests("servicebtoserviced.integrationtests");
 	});
 
 public void RunConsumerIntegrationTests(string testsPackageName)
