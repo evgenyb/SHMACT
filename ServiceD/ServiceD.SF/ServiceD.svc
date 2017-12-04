@@ -1,4 +1,4 @@
 ﻿<%@ ServiceHost
   Language="C#"
-  Service="ProviderA.ProviderA"
+  Service="ServiceD.SF.ServiceD"
   Factory="Castle.Facilities.WcfIntegration.DefaultServiceHostFactory, Castle.Facilities.WcfIntegration" %>

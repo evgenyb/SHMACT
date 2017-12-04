@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Web;
-using System.Web.Security;
-using System.Web.SessionState;
 using Castle.Facilities.WcfIntegration;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
-using ProviderA.Contracts;
+using ServiceD.Contracts;
 
-namespace ProviderA
+namespace ServiceD.SF
 {
     public class Global : System.Web.HttpApplication
     {
@@ -20,10 +15,10 @@ namespace ProviderA
             var container = new WindsorContainer();
 
             container.AddFacility<WcfFacility>(f => f.CloseTimeout = TimeSpan.Zero)
-                .Register(Component.For<IProviderA>()
-                    .ImplementedBy<ProviderA>()
+                .Register(Component.For<IServiceD>()
+                    .ImplementedBy<ServiceD>()
                     .AsWcfService(new DefaultServiceModel().Hosted()
-                    .AddEndpoints(WcfEndpoint.ForContract<IProviderA>().BoundTo(new BasicHttpBinding()))));
+                    .AddEndpoints(WcfEndpoint.ForContract<IServiceD>().BoundTo(new BasicHttpBinding()))));
         }
 
         protected void Session_Start(object sender, EventArgs e)

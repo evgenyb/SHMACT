@@ -10,8 +10,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProviderA</RootNamespace>
-    <AssemblyName>ProviderA</AssemblyName>
+    <RootNamespace>ServiceD.SF</RootNamespace>
+    <AssemblyName>ServiceD.SF</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -52,8 +52,8 @@
       <HintPath>..\packages\Castle.Windsor.4.1.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="ProviderA.Contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ProviderA.Contracts.1.5.17\lib\net462\ProviderA.Contracts.dll</HintPath>
+    <Reference Include="ServiceD.Contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\ServiceD.Contracts.1.5.21\lib\net462\ServiceD.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Services" />
@@ -88,7 +88,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProviderA.cs" />
+    <Compile Include="ServiceD.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ServiceD.SF.nuspec" />
