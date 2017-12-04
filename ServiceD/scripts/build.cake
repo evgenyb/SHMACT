@@ -50,10 +50,10 @@ Task("push")
 Task("default")
   .IsDependentOn("pack");
 
-Task("Run-ConsumerA-IntegrationTests")
+Task("Run-ServiceA-IntegrationTests")
 	.Does(() =>
 	{
-		RunConsumerIntegrationTests("ca.pa.integrationtests");
+		RunConsumerIntegrationTests("serviceatoserviced.integrationtests");
 	});
 
 Task("Run-ConsumerB-IntegrationTests")
