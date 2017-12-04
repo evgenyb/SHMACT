@@ -1,4 +1,4 @@
-﻿namespace ProviderA.Contracts
+﻿namespace ServiceD.Contracts
 {
     public class Constants
     {

@@ -1,10 +1,10 @@
 ﻿using System.Runtime.Serialization;
 using System.ServiceModel;
 
-namespace ProviderA.Contracts
+namespace ServiceD.Contracts
 {
-    [ServiceContract(Name = "IProviderA", Namespace = Constants.OperationsNamespace)]
-    public interface IProviderA
+    [ServiceContract(Name = "IServiceD", Namespace = Constants.OperationsNamespace)]
+    public interface IServiceD
     {
 
         [OperationContract]

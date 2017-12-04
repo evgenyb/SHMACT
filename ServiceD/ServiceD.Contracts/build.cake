@@ -4,8 +4,8 @@ var nugetRestoreFeed = Argument("nugetRestoreFeed", "c:/nuget");
 var nugetPushFeed = Argument("nugetPushFeed", "c:/nuget");
 var packageVersion = Argument("packageVersion", "1.2.0");
 
-var packageName = "ProviderA.Contracts";
-var solution = File("./ProviderA.Contracts.sln");
+var packageName = "ServiceD.Contracts";
+var solution = File("./ServiceD.Contracts.sln");
 
 Task("build")
 	.IsDependentOn("NuGet-Restore")

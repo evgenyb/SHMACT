@@ -8,8 +8,8 @@
     <ProjectGuid>{5C2FE4AE-8347-4B99-8F10-CB1B3DF8C05A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProviderA.Contracts</RootNamespace>
-    <AssemblyName>ProviderA.Contracts</AssemblyName>
+    <RootNamespace>ServiceD.Contracts</RootNamespace>
+    <AssemblyName>ServiceD.Contracts</AssemblyName>
     <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
@@ -46,15 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
-    <Compile Include="IProviderA.cs" />
+    <Compile Include="IServiceD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceDependencies\CA\IProviderAForCA.cs" />
-    <Compile Include="ServiceDependencies\CB\IProviderAForCB.cs" />
-    <Compile Include="ServiceDependencies\CC\IProviderAForCC.cs" />
+    <Compile Include="ServiceDependencies\ServiceA\IServiceDForServiceA.cs" />
+    <Compile Include="ServiceDependencies\ServiceB\IServiceDForServiceB.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="build.ps1" />
-    <None Include="ProviderA.Contracts.nuspec" />
+    <None Include="ServiceD.Contracts.nuspec" />
     <None Include="build.cake" />
   </ItemGroup>
   <ItemGroup />
