@@ -7,13 +7,13 @@ using NUnit.Framework;
 using ProviderA.Contracts;
 using ProviderA.Contracts.ServiceDependencies.CB;
 
-namespace CB.PA.IntegrationTests
+namespace ServiceBToServiceD.IntegrationTests
 {
     [TestFixture]
-    public class ProviderAIntegrationTests
+    public class ServiceDIntegrationTests
     {
         IWindsorContainer _container;
-        private IProviderAForCB _providerb;
+        private IProviderAForCB _serviceD;
         [OneTimeSetUp]
         public void Init()
         {
@@ -23,9 +23,9 @@ namespace CB.PA.IntegrationTests
             _container.Register(Component.For<IProviderAForCB>()
                 .AsWcfClient(WcfEndpoint
                     .BoundTo(new BasicHttpBinding())
-                    .At(httpBaseUrl + "/ProviderA/ProviderA.svc")));
+                    .At(httpBaseUrl + "/ServiceD.SF/ServiceD.svc")));
 
-            _providerb = _container.Resolve<IProviderAForCB>();
+            _serviceD = _container.Resolve<IProviderAForCB>();
         }
 
         [OneTimeTearDown]
@@ -37,7 +37,7 @@ namespace CB.PA.IntegrationTests
         [Test]
         public void IProviderAForCB_M1()
         {
-            var response = _providerb.M2();
+            var response = _serviceD.M2();
             Assert.That(response, Is.Not.Null);
             Assert.That(response, Is.TypeOf<D2>());
         }

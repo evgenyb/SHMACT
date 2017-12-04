@@ -6,9 +6,9 @@ var configuration = Argument("configuration", "Release");
 var apiKey = Argument("apiKey", "API-4UYDPMET0PF6EDSFSLN9NUJWH9I");
 var nugetPushFeed = Argument("nugetPushFeed", "http://localhost:8085/nuget/packages");
 var packageVersion = Argument("packageVersion", "1.3.0");
-var packageName = "CB.PA.IntegrationTests";
+var packageName = "ServiceBToServiceD.IntegrationTests";
 
-var solution = File("../ConsumerB.sln");
+var solution = File("../ServiceB.sln");
 
 Task("CI-Build")
 	.IsDependentOn("Push-CosumerTests");
@@ -28,7 +28,7 @@ Task("Run-IntegrationTests")
 	.IsDependentOn("build")
 	.Does(() =>
 	{
-		RunIntegrationTests("cb.pa.integrationtests");
+		RunIntegrationTests(packageName);
 	});
 
 Task("Pack-CosumerTests")

@@ -7,8 +7,8 @@
     <ProjectGuid>{D327A451-85C9-4377-A4E3-E7C85A25925A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CB.PA.IntegrationTests</RootNamespace>
-    <AssemblyName>CB.PA.IntegrationTests</AssemblyName>
+    <RootNamespace>ServiceBToServiceD.IntegrationTests</RootNamespace>
+    <AssemblyName>ServiceBToServiceD.IntegrationTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -66,13 +66,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProviderAINtegrationTests.cs" />
+    <Compile Include="ServiceDIntegrationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="CB.PA.IntegrationTests.nuspec" />
+    <None Include="ServiceBToServiceD.IntegrationTests.nuspec" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
