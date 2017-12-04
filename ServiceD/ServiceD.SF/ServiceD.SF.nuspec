@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>ProviderA</id>
+    <id>ServiceD.SF</id>
     <version>6.2.0</version>
     <authors>Team Phoenix</authors>
     <owners>Team Phoenix</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>ProviderA ServiceFacade</description>
+    <description>ServiceD.SF</description>
     <copyright>Copyright 2017</copyright>
   </metadata>
   <files>
