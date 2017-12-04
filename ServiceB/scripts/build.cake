@@ -35,7 +35,7 @@ Task("Pack-CosumerTests")
   .IsDependentOn("Run-IntegrationTests")
   .Does(() => 
   {
-    NuGetPack("../Tests/CB.PA.IntegrationTests/" + packageName + ".nuspec", new NuGetPackSettings
+    NuGetPack("../Tests/ServiceBToServiceD.IntegrationTests/" + packageName + ".nuspec", new NuGetPackSettings
 	{
 		OutputDirectory = "./out",
 		Version = packageVersion
