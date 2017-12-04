@@ -4,8 +4,8 @@ using Castle.Facilities.WcfIntegration;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using NUnit.Framework;
-using ProviderA.Contracts;
-using ProviderA.Contracts.ServiceDependencies.CB;
+using ServiceD.Contracts;
+using ServiceD.Contracts.ServiceDependencies.ServiceB;
 
 namespace ServiceBToServiceD.IntegrationTests
 {
@@ -13,19 +13,19 @@ namespace ServiceBToServiceD.IntegrationTests
     public class ServiceDIntegrationTests
     {
         IWindsorContainer _container;
-        private IProviderAForCB _serviceD;
+        private IServiceDForServiceB _serviceD;
         [OneTimeSetUp]
         public void Init()
         {
             _container = new WindsorContainer();
             _container.AddFacility<WcfFacility>();
             var httpBaseUrl = ConfigurationManager.AppSettings["Global.WcfServices.HttpBaseUrl"];
-            _container.Register(Component.For<IProviderAForCB>()
+            _container.Register(Component.For<IServiceDForServiceB>()
                 .AsWcfClient(WcfEndpoint
                     .BoundTo(new BasicHttpBinding())
                     .At(httpBaseUrl + "/ServiceD.SF/ServiceD.svc")));
 
-            _serviceD = _container.Resolve<IProviderAForCB>();
+            _serviceD = _container.Resolve<IServiceDForServiceB>();
         }
 
         [OneTimeTearDown]
@@ -35,7 +35,7 @@ namespace ServiceBToServiceD.IntegrationTests
         }
 
         [Test]
-        public void IProviderAForCB_M1()
+        public void IServiceDForServiceB_M1()
         {
             var response = _serviceD.M2();
             Assert.That(response, Is.Not.Null);
