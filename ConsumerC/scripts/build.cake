@@ -1,4 +1,5 @@
-﻿#tool nuget:?package=NUnit.ConsoleRunner&version=3.4.0
+﻿#tool "NUnit.ConsoleRunner"
+#tool "NUnit.Extension.TeamCityEventListener"
 
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
@@ -23,8 +24,15 @@ Task("build")
 	.IsDependentOn("NuGet-Restore")
 	.Does(() => DotNetBuild(solution));
 
+Task("Run-IntegrationTests")
+	.IsDependentOn("build")
+	.Does(() =>
+	{
+		RunIntegrationTests("cc.pa.integrationtests");
+	});
+
 Task("Pack-CosumerTests")
-  .IsDependentOn("build")
+  .IsDependentOn("Run-IntegrationTests")
   .Does(() => 
   {
     NuGetPack("../Tests/CC.PA.IntegrationTests/" + packageName + ".nuspec", new NuGetPackSettings
@@ -49,5 +57,22 @@ Task("Push-CosumerTests")
 
 Task("default")
   .IsDependentOn("build");
+
+
+public void RunIntegrationTests(string testsProjectName)
+{
+	var testFiles = $"../Tests/{testsProjectName}/out/*.IntegrationTests.dll";
+
+	var unitTestAssemblies = GetFiles(testFiles);
+
+	NUnit3(
+		unitTestAssemblies,
+		new NUnit3Settings()
+		{
+			NoHeader = true,
+			NoResults = true,
+			TeamCity = BuildSystem.IsRunningOnTeamCity
+		});
+}
 
 RunTarget(target);
