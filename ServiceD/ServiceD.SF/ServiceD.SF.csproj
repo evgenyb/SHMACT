@@ -80,7 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="ProviderA.svc" />
+    <Content Include="ServiceD.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -91,7 +91,7 @@
     <Compile Include="ProviderA.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ProviderA.nuspec" />
+    <Content Include="ServiceD.SF.nuspec" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

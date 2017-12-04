@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26606.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderA", "ProviderA\ProviderA.csproj", "{9183A52F-C7AD-4CCF-875C-42B590E6A03D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceD.SF", "ServiceD.SF\ServiceD.SF.csproj", "{9183A52F-C7AD-4CCF-875C-42B590E6A03D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{F62EF967-3F3C-473A-9997-A1101E428D12}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{4A4494B7-7A83-4604-BD4F-92E69D2A8005}"
 	ProjectSection(SolutionItems) = preProject
 		scripts\build.cake = scripts\build.cake
 		scripts\build.ps1 = scripts\build.ps1
