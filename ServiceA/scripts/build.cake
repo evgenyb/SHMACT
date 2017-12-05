@@ -4,6 +4,7 @@
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 var apiKey = Argument("apiKey", "API-4UYDPMET0PF6EDSFSLN9NUJWH9I");
+var nugetOctopusPushFeed = Argument("nugetPushFeed", "http://localhost:8085/nuget/packages");
 var nugetPushFeed = Argument("nugetPushFeed", "http://localhost:8085/nuget/packages");
 var packageVersion = Argument("packageVersion", "1.3.0");
 var packageName = "ServiceAToServiceD.IntegrationTests";
@@ -75,7 +76,7 @@ Task("Push-SF")
         "./out/" + sfPackageName + "." + packageVersion + ".nupkg",
         new NuGetPushSettings
         {
-            Source = nugetPushFeed,
+            Source = nugetOctopusPushFeed,
             ApiKey = apiKey
         });
   });
