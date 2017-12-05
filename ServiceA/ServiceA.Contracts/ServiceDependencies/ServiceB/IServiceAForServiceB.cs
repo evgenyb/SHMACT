@@ -3,7 +3,7 @@
 namespace ServiceA.Contracts.ServiceDependencies.ServiceB
 {
     [ServiceContract(Name = "IServiceA", Namespace = Constants.OperationsNamespace)]
-    public interface IServiceDForServiceA
+    public interface IServiceAForServiceB
     {
         [OperationContract]
         Foo Foo();
