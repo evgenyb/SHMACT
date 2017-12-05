@@ -4,7 +4,7 @@
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 var apiKey = Argument("apiKey", "API-4UYDPMET0PF6EDSFSLN9NUJWH9I");
-var nugetOctopusPushFeed = Argument("nugetPushFeed", "http://localhost:8085/nuget/packages");
+var nugetOctopusPushFeed = Argument("nugetOctopusPushFeed", "http://localhost:8085/nuget/packages");
 var nugetPushFeed = Argument("nugetPushFeed", "c:\nuget");
 var packageVersion = Argument("packageVersion", "1.3.0");
 var packageName = "ServiceAToServiceD.IntegrationTests";
