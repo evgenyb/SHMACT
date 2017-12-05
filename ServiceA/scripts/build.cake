@@ -7,6 +7,7 @@ var apiKey = Argument("apiKey", "API-4UYDPMET0PF6EDSFSLN9NUJWH9I");
 var nugetPushFeed = Argument("nugetPushFeed", "http://localhost:8085/nuget/packages");
 var packageVersion = Argument("packageVersion", "1.3.0");
 var packageName = "ServiceAToServiceD.IntegrationTests";
+var sfPackageName = "ServiceA.SF";
 
 var solution = File("../ServiceA.sln");
 
@@ -55,6 +56,29 @@ Task("Push-CosumerTests")
         });
   });
 
+Task("Pack-SF")
+  .IsDependentOn("Push-CosumerTests")
+  .Does(() => 
+  {
+    NuGetPack("../ServiceA.SF/" + sfPackageName +".nuspec", new NuGetPackSettings
+	{
+		OutputDirectory = "./out",
+		Version = packageVersion
+	});
+});
+
+Task("Push-SF")
+  .IsDependentOn("Pack-SF")
+  .Does(() =>
+  {
+	NuGetPush(
+        "./out/" + sfPackageName + "." + packageVersion + ".nupkg",
+        new NuGetPushSettings
+        {
+            Source = nugetPushFeed,
+            ApiKey = apiKey
+        });
+  });
 Task("default")
   .IsDependentOn("build");
 
