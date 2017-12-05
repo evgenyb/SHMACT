@@ -12,7 +12,7 @@ var sfPackageName = "ServiceA.SF";
 var solution = File("../ServiceA.sln");
 
 Task("CI-Build")
-	.IsDependentOn("Push-CosumerTests");
+	.IsDependentOn("Push-SF");
 
 Task("NuGet-Restore")
     .Description("Restoring NuGet packages")
